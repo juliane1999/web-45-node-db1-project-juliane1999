@@ -3,7 +3,7 @@ const getAll = () => {
 }
 
 const getById = id => {
-  // DO YOUR MAGIC
+ return deleteById("accounts").where("id",id).first()
 }
 
 const create = account => {
