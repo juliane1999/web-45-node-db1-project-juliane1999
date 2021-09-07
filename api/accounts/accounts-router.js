@@ -2,7 +2,7 @@ const { checkAccountId, checkAccountPayload, checkAccountNameUnique, } = require
 const Account = require('./accounts-model')
 const router = require('express').Router()
 
-router.get('/', checkAccountId, async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try{
     const data = await Account.getAll()
     res.json(data)
@@ -32,11 +32,11 @@ try{
 }
 })
 
-router.put('/:id', checkAccountId,checkAccountPayload,checkAccountNameUnique, async (req, res, next) => {
+router.put('/:id', checkAccountId,checkAccountPayload, async (req, res, next) => {
   const update = await Account.updateById(req.params.id, req.body)
   res.json(update)
 try{
-  res.json('update account')
+  res.status(200).json
 } catch (err) {
   next(err)
 }
