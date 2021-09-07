@@ -32,7 +32,7 @@ try{
 }
 })
 
-router.put('/:id', checkAccountId,checkAccountPayload, async (req, res, next) => {
+router.put('/:id', checkAccountId,checkAccountPayload,checkAccountNameUnique, async (req, res, next) => {
   const update = await Account.updateById(req.params.id, req.body)
   res.json(update)
 try{
